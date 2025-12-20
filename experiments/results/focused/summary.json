@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-12-19T21:23:54.654290",
+  "config": {
+    "generations": 12,
+    "population": 10,
+    "sample_fraction": 0.12,
+    "final_sample": 0.25,
+    "seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "results": {
+    "TIGHT": {
+      "budget": 2000,
+      "mean_fitness": 0.983739837398374,
+      "std_fitness": 0.02299534247761132,
+      "mean_agents": 3.1666666666666665,
+      "mean_edges": 2.6,
+      "n": 3
+    },
+    "MEDIUM": {
+      "budget": 5000,
+      "mean_fitness": 1.0,
+      "std_fitness": 0.0,
+      "mean_agents": 3.1,
+      "mean_edges": 2.4333333333333336,
+      "n": 3
+    },
+    "LOOSE": {
+      "budget": 10000,
+      "mean_fitness": 0.983739837398374,
+      "std_fitness": 0.02299534247761132,
+      "mean_agents": 3.5,
+      "mean_edges": 2.8333333333333335,
+      "n": 3
+    },
+    "UNCONSTRAINED": {
+      "budget": 50000,
+      "mean_fitness": 0.991869918699187,
+      "std_fitness": 0.01149767123880566,
+      "mean_agents": 2.9,
+      "mean_edges": 2.1333333333333333,
+      "n": 3
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "benchmark": "HumanEval",
+  "total_tasks": 164,
+  "sample_fraction": 0.2,
+  "budget": 5000,
+  "model": "gpt-4o-mini",
+  "baselines": {
+    "single_coder": {
+      "fitness": 0.9573170731707317,
+      "passed": 157,
+      "total": 164,
+      "tokens_used": 15078,
+      "time_seconds": 346.6544871330261,
+      "agents": 1,
+      "edges": 0
+    },
+    "coder_reviewer": {
+      "fitness": 0.9573170731707317,
+      "passed": 157,
+      "total": 164,
+      "tokens_used": 31463,
+      "time_seconds": 736.6703689098358,
+      "agents": 2,
+      "edges": 1
+    },
+    "planner_coder": {
+      "fitness": 0.975609756097561,
+      "passed": 160,
+      "total": 164,
+      "tokens_used": 26637,
+      "time_seconds": 688.5369048118591,
+      "agents": 2,
+      "edges": 1
+    },
+    "planner_coder_reviewer": {
+      "fitness": 0.9634146341463414,
+      "passed": 158,
+      "total": 164,
+      "tokens_used": 43946,
+      "time_seconds": 1143.1724140644073,
+      "agents": 3,
+      "edges": 2
+    }
+  }
+}

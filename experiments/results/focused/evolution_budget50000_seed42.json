@@ -1,0 +1,523 @@
+{
+  "budget": 50000,
+  "seed": 42,
+  "config": {
+    "budget": 50000,
+    "seed": 42,
+    "population_size": 10,
+    "generations": 12,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "mutation_rate": 0.4,
+    "crossover_rate": 0.5,
+    "sample_fraction": 0.12,
+    "final_sample_fraction": 0.25
+  },
+  "start_time": "2025-12-19T07:51:58.553010",
+  "best_fitness_per_gen": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "avg_fitness_per_gen": [
+    0.9578947368421054,
+    0.9421052631578947,
+    0.9526315789473685,
+    0.9736842105263157,
+    0.9789473684210526,
+    0.9894736842105264,
+    0.9894736842105264,
+    0.9736842105263157,
+    0.9947368421052631,
+    0.9789473684210528,
+    1.0,
+    0.9842105263157895
+  ],
+  "diversity_per_gen": [
+    1.0,
+    0.6,
+    0.7,
+    0.6,
+    0.6,
+    0.4,
+    0.3,
+    0.4,
+    0.5,
+    0.5,
+    0.5,
+    0.4
+  ],
+  "avg_agents_per_gen": [
+    2.1,
+    2.9,
+    2.8,
+    2.3,
+    2.0,
+    1.7,
+    1.7,
+    1.7,
+    2.0,
+    1.9,
+    2.1,
+    2.0
+  ],
+  "avg_edges_per_gen": [
+    1.2,
+    1.8,
+    1.8,
+    1.2,
+    0.9,
+    0.6,
+    0.5,
+    0.8,
+    1.2,
+    1.0,
+    1.2,
+    1.2
+  ],
+  "best_genome_per_gen": [
+    {
+      "id": "18055739",
+      "agents": [
+        {
+          "id": "3836a06e",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "3836a06e": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "3836a06e",
+      "output_agent_id": "3836a06e",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [],
+      "generation": 0
+    },
+    {
+      "id": "f5f5da58",
+      "agents": [
+        {
+          "id": "525563e2",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "525563e2": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "525563e2",
+      "output_agent_id": "525563e2",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "18055739"
+      ],
+      "generation": 1
+    },
+    {
+      "id": "d5a601cd",
+      "agents": [
+        {
+          "id": "9ee75337",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "9ee75337": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "9ee75337",
+      "output_agent_id": "9ee75337",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "f5f5da58"
+      ],
+      "generation": 2
+    },
+    {
+      "id": "7d2ebc82",
+      "agents": [
+        {
+          "id": "d5b55dc1",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "d5b55dc1": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "d5b55dc1",
+      "output_agent_id": "d5b55dc1",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "d5a601cd"
+      ],
+      "generation": 3
+    },
+    {
+      "id": "db04ac95",
+      "agents": [
+        {
+          "id": "d8c6c6b1",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "d8c6c6b1": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "d8c6c6b1",
+      "output_agent_id": "d8c6c6b1",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "7d2ebc82"
+      ],
+      "generation": 4
+    },
+    {
+      "id": "a973135e",
+      "agents": [
+        {
+          "id": "9876bcd1",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "9876bcd1": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "9876bcd1",
+      "output_agent_id": "9876bcd1",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "db04ac95"
+      ],
+      "generation": 5
+    },
+    {
+      "id": "40d2789d",
+      "agents": [
+        {
+          "id": "0fc54fda",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "a2a8917e",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "0fc54fda": [],
+        "a2a8917e": [
+          "0fc54fda"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "0fc54fda",
+      "output_agent_id": "a2a8917e",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "36a00b61"
+      ],
+      "generation": 8
+    },
+    {
+      "id": "f56e134f",
+      "agents": [
+        {
+          "id": "1930c2e0",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "cac7e411",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "1930c2e0": [],
+        "cac7e411": [
+          "1930c2e0"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "1930c2e0",
+      "output_agent_id": "cac7e411",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "40d2789d"
+      ],
+      "generation": 9
+    },
+    {
+      "id": "6e44bf7b",
+      "agents": [
+        {
+          "id": "6088c1a4",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "bb82f976",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "6088c1a4": [],
+        "bb82f976": [
+          "6088c1a4"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "6088c1a4",
+      "output_agent_id": "bb82f976",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "f56e134f"
+      ],
+      "generation": 10
+    },
+    {
+      "id": "88e96689",
+      "agents": [
+        {
+          "id": "d3bcc2dd",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "ef3890f4",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "d3bcc2dd": [],
+        "ef3890f4": [
+          "d3bcc2dd"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "d3bcc2dd",
+      "output_agent_id": "ef3890f4",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "6e44bf7b"
+      ],
+      "generation": 11
+    },
+    {
+      "id": "ccbad5be",
+      "agents": [
+        {
+          "id": "264ebb40",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "134e8a1d",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "264ebb40": [],
+        "134e8a1d": [
+          "264ebb40"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "264ebb40",
+      "output_agent_id": "134e8a1d",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "88e96689"
+      ],
+      "generation": 12
+    },
+    {
+      "id": "a26ac5cd",
+      "agents": [
+        {
+          "id": "99bb9920",
+          "role": "debugger",
+          "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "2c02d94a",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "99bb9920": [],
+        "2c02d94a": [
+          "99bb9920"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 189,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "99bb9920",
+      "output_agent_id": "2c02d94a",
+      "max_rounds": 1,
+      "early_exit_confidence": 0.8219562367140005,
+      "parent_ids": [
+        "ccbad5be"
+      ],
+      "generation": 13
+    }
+  ],
+  "total_tokens": 206056,
+  "total_api_calls": 2280,
+  "completed": true,
+  "final_best_fitness": 1.0,
+  "final_passed": 41,
+  "final_total": 41,
+  "best_genome": {
+    "id": "40d2789d",
+    "agents": [
+      {
+        "id": "0fc54fda",
+        "role": "debugger",
+        "system_prompt": "You are a debugging agent. Given failing code and error messages, identify and fix the bugs. Explain your fixes.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "a2a8917e",
+        "role": "planner",
+        "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      }
+    ],
+    "topology": {
+      "0fc54fda": [],
+      "a2a8917e": [
+        "0fc54fda"
+      ]
+    },
+    "message_format": "structured",
+    "max_message_length": 189,
+    "aggregation_strategy": "sequential",
+    "entry_agent_id": "0fc54fda",
+    "output_agent_id": "a2a8917e",
+    "max_rounds": 1,
+    "early_exit_confidence": 0.8219562367140005,
+    "parent_ids": [
+      "36a00b61"
+    ],
+    "generation": 8
+  },
+  "end_time": "2025-12-19T10:54:33.532224",
+  "total_time_seconds": 10954.979241371155
+}

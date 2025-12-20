@@ -1,0 +1,22 @@
+{
+  "model": "gpt-4o-mini",
+  "budget": 5000,
+  "seed": 42,
+  "tasks_evaluated": 10,
+  "tasks_passed": 7,
+  "pass_rate": 0.7,
+  "total_tokens": 751,
+  "elapsed_seconds": 26.389341115951538,
+  "results_by_task": {
+    "HumanEval/160": false,
+    "HumanEval/120": true,
+    "HumanEval/13": true,
+    "HumanEval/102": true,
+    "HumanEval/69": false,
+    "HumanEval/68": true,
+    "HumanEval/112": true,
+    "HumanEval/15": true,
+    "HumanEval/32": false,
+    "HumanEval/137": true
+  }
+}

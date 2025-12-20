@@ -1,0 +1,756 @@
+{
+  "budget": 5000,
+  "seed": 44,
+  "config": {
+    "budget": 5000,
+    "seed": 44,
+    "population_size": 10,
+    "generations": 12,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "mutation_rate": 0.4,
+    "crossover_rate": 0.5,
+    "sample_fraction": 0.12,
+    "final_sample_fraction": 0.25
+  },
+  "start_time": "2025-12-18T08:51:51.353961",
+  "best_fitness_per_gen": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "avg_fitness_per_gen": [
+    0.1,
+    0.2,
+    0.5,
+    0.7,
+    0.9,
+    0.9,
+    1.0,
+    1.0,
+    1.0,
+    0.8,
+    0.8,
+    1.0
+  ],
+  "diversity_per_gen": [
+    1.0,
+    0.6,
+    0.7,
+    0.5,
+    0.4,
+    0.4,
+    0.4,
+    0.3,
+    0.4,
+    0.5,
+    0.5,
+    0.6
+  ],
+  "avg_agents_per_gen": [
+    2.4,
+    2.1,
+    2.7,
+    2.8,
+    3.0,
+    3.1,
+    3.2,
+    3.0,
+    3.1,
+    3.1,
+    3.0,
+    3.0
+  ],
+  "avg_edges_per_gen": [
+    1.5,
+    1.3,
+    2.2,
+    2.5,
+    2.9,
+    3.0,
+    3.3,
+    3.0,
+    3.1,
+    2.8,
+    2.9,
+    3.1
+  ],
+  "best_genome_per_gen": [
+    {
+      "id": "b4153e3a",
+      "agents": [
+        {
+          "id": "b5622a28",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "0c968c56",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "d630c257",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "b5622a28": [
+          "0c968c56"
+        ],
+        "0c968c56": [
+          "b5622a28"
+        ],
+        "d630c257": [
+          "0c968c56"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "b5622a28",
+      "output_agent_id": "d630c257",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [],
+      "generation": 0
+    },
+    {
+      "id": "a959e459",
+      "agents": [
+        {
+          "id": "c43e3201",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "691b8520",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7a95ebfc",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "c43e3201": [
+          "691b8520"
+        ],
+        "691b8520": [
+          "c43e3201"
+        ],
+        "7a95ebfc": [
+          "691b8520"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "c43e3201",
+      "output_agent_id": "7a95ebfc",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "b4153e3a"
+      ],
+      "generation": 1
+    },
+    {
+      "id": "e773136e",
+      "agents": [
+        {
+          "id": "6776a50e",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "4f3d18d2",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "059d90bc",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "6776a50e": [
+          "4f3d18d2"
+        ],
+        "4f3d18d2": [
+          "6776a50e"
+        ],
+        "059d90bc": [
+          "4f3d18d2"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "6776a50e",
+      "output_agent_id": "059d90bc",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "a959e459"
+      ],
+      "generation": 2
+    },
+    {
+      "id": "92cd421e",
+      "agents": [
+        {
+          "id": "15c53b89",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7d67db98",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "08105ea2",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "15c53b89": [
+          "7d67db98"
+        ],
+        "7d67db98": [
+          "15c53b89"
+        ],
+        "08105ea2": [
+          "7d67db98"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "15c53b89",
+      "output_agent_id": "08105ea2",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "e773136e"
+      ],
+      "generation": 3
+    },
+    {
+      "id": "a1a71e95",
+      "agents": [
+        {
+          "id": "159e86d0",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "22ca90a0",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "832588c9",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "159e86d0": [
+          "22ca90a0"
+        ],
+        "22ca90a0": [
+          "159e86d0"
+        ],
+        "832588c9": [
+          "22ca90a0"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "159e86d0",
+      "output_agent_id": "832588c9",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "92cd421e"
+      ],
+      "generation": 4
+    },
+    {
+      "id": "4d60b866",
+      "agents": [
+        {
+          "id": "c27673c6",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "e90a94ef",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "9f98e844",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "c27673c6": [
+          "e90a94ef"
+        ],
+        "e90a94ef": [
+          "c27673c6"
+        ],
+        "9f98e844": [
+          "e90a94ef"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "c27673c6",
+      "output_agent_id": "9f98e844",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "a1a71e95"
+      ],
+      "generation": 5
+    },
+    {
+      "id": "f46a7c73",
+      "agents": [
+        {
+          "id": "67a2b66e",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "454a0685",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "77da79ab",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "67a2b66e": [
+          "454a0685"
+        ],
+        "454a0685": [
+          "67a2b66e"
+        ],
+        "77da79ab": [
+          "454a0685"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "67a2b66e",
+      "output_agent_id": "77da79ab",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "4d60b866"
+      ],
+      "generation": 6
+    },
+    {
+      "id": "1d0d66a9",
+      "agents": [
+        {
+          "id": "22d69cd2",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "ad7ecf26",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "0f03fae9",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "22d69cd2": [
+          "ad7ecf26"
+        ],
+        "ad7ecf26": [
+          "22d69cd2"
+        ],
+        "0f03fae9": [
+          "ad7ecf26"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "22d69cd2",
+      "output_agent_id": "0f03fae9",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "f46a7c73"
+      ],
+      "generation": 7
+    },
+    {
+      "id": "261ec85b",
+      "agents": [
+        {
+          "id": "371c169d",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "252aaa9d",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "41ad98e0",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "371c169d": [
+          "252aaa9d"
+        ],
+        "252aaa9d": [
+          "371c169d"
+        ],
+        "41ad98e0": [
+          "252aaa9d"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "371c169d",
+      "output_agent_id": "41ad98e0",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "1d0d66a9"
+      ],
+      "generation": 8
+    },
+    {
+      "id": "df89bf06",
+      "agents": [
+        {
+          "id": "0e3c079d",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "08562746",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "f65f009c",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "0e3c079d": [
+          "08562746"
+        ],
+        "08562746": [
+          "0e3c079d"
+        ],
+        "f65f009c": [
+          "08562746"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "0e3c079d",
+      "output_agent_id": "f65f009c",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "261ec85b"
+      ],
+      "generation": 9
+    },
+    {
+      "id": "ef2796db",
+      "agents": [
+        {
+          "id": "34c2ab1e",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "be28a669",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "016d8c09",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "34c2ab1e": [
+          "be28a669"
+        ],
+        "be28a669": [
+          "34c2ab1e"
+        ],
+        "016d8c09": [
+          "be28a669"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "34c2ab1e",
+      "output_agent_id": "016d8c09",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "df89bf06"
+      ],
+      "generation": 10
+    },
+    {
+      "id": "30df7671",
+      "agents": [
+        {
+          "id": "2efa5160",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7be5fb57",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "efd3f57c",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "2efa5160": [
+          "7be5fb57"
+        ],
+        "7be5fb57": [
+          "2efa5160"
+        ],
+        "efd3f57c": [
+          "7be5fb57"
+        ]
+      },
+      "message_format": "minimal",
+      "max_message_length": 228,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "2efa5160",
+      "output_agent_id": "efd3f57c",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7366398877431948,
+      "parent_ids": [
+        "ef2796db"
+      ],
+      "generation": 11
+    }
+  ],
+  "total_tokens": 182970,
+  "total_api_calls": 2280,
+  "completed": true,
+  "final_best_fitness": 1.0,
+  "final_passed": 41,
+  "final_total": 41,
+  "best_genome": {
+    "id": "b4153e3a",
+    "agents": [
+      {
+        "id": "b5622a28",
+        "role": "generalist",
+        "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "0c968c56",
+        "role": "coder",
+        "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "d630c257",
+        "role": "architect",
+        "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      }
+    ],
+    "topology": {
+      "b5622a28": [
+        "0c968c56"
+      ],
+      "0c968c56": [
+        "b5622a28"
+      ],
+      "d630c257": [
+        "0c968c56"
+      ]
+    },
+    "message_format": "minimal",
+    "max_message_length": 228,
+    "aggregation_strategy": "hierarchical",
+    "entry_agent_id": "b5622a28",
+    "output_agent_id": "d630c257",
+    "max_rounds": 3,
+    "early_exit_confidence": 0.7366398877431948,
+    "parent_ids": [],
+    "generation": 0
+  },
+  "end_time": "2025-12-18T11:55:17.521862",
+  "total_time_seconds": 11006.167899131775
+}

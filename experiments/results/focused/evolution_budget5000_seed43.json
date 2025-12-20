@@ -1,0 +1,756 @@
+{
+  "budget": 5000,
+  "seed": 43,
+  "config": {
+    "budget": 5000,
+    "seed": 43,
+    "population_size": 10,
+    "generations": 12,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "mutation_rate": 0.4,
+    "crossover_rate": 0.5,
+    "sample_fraction": 0.12,
+    "final_sample_fraction": 0.25
+  },
+  "start_time": "2025-12-18T07:09:44.614782",
+  "best_fitness_per_gen": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "avg_fitness_per_gen": [
+    0.2,
+    0.7,
+    0.9,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "diversity_per_gen": [
+    1.0,
+    0.6,
+    0.5,
+    0.4,
+    0.5,
+    0.3,
+    0.3,
+    0.3,
+    0.4,
+    0.3,
+    0.2,
+    0.2
+  ],
+  "avg_agents_per_gen": [
+    2.1,
+    2.8,
+    3.1,
+    3.2,
+    3.4,
+    3.1,
+    3.1,
+    3.1,
+    3.1,
+    2.9,
+    3.0,
+    3.0
+  ],
+  "avg_edges_per_gen": [
+    1.3,
+    2.0,
+    2.4,
+    2.5,
+    2.1,
+    1.0,
+    1.0,
+    0.4,
+    1.3,
+    1.8,
+    2.1,
+    1.8
+  ],
+  "best_genome_per_gen": [
+    {
+      "id": "00d821fe",
+      "agents": [
+        {
+          "id": "3ecd3a4f",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "ad09fe62",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "63b9a484",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "3ecd3a4f": [
+          "ad09fe62"
+        ],
+        "ad09fe62": [
+          "63b9a484"
+        ],
+        "63b9a484": [
+          "ad09fe62"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "3ecd3a4f",
+      "output_agent_id": "63b9a484",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [],
+      "generation": 0
+    },
+    {
+      "id": "d0538128",
+      "agents": [
+        {
+          "id": "073dd7e1",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "433cf7fc",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "000bdd0f",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "073dd7e1": [
+          "433cf7fc"
+        ],
+        "433cf7fc": [
+          "000bdd0f"
+        ],
+        "000bdd0f": [
+          "433cf7fc"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "073dd7e1",
+      "output_agent_id": "000bdd0f",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "00d821fe"
+      ],
+      "generation": 1
+    },
+    {
+      "id": "a576bade",
+      "agents": [
+        {
+          "id": "7bdd05d0",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "eb0b40f1",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "8d076774",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "7bdd05d0": [
+          "eb0b40f1"
+        ],
+        "eb0b40f1": [
+          "8d076774"
+        ],
+        "8d076774": [
+          "eb0b40f1"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "7bdd05d0",
+      "output_agent_id": "8d076774",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "d0538128"
+      ],
+      "generation": 2
+    },
+    {
+      "id": "3b69da6f",
+      "agents": [
+        {
+          "id": "36ce22ea",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "3816b046",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "89dc66e7",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "36ce22ea": [
+          "3816b046"
+        ],
+        "3816b046": [
+          "89dc66e7"
+        ],
+        "89dc66e7": [
+          "3816b046"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "36ce22ea",
+      "output_agent_id": "89dc66e7",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "a576bade"
+      ],
+      "generation": 3
+    },
+    {
+      "id": "38979e21",
+      "agents": [
+        {
+          "id": "cfd98cb5",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "15a0c3af",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "e99d6963",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "cfd98cb5": [
+          "15a0c3af"
+        ],
+        "15a0c3af": [
+          "e99d6963"
+        ],
+        "e99d6963": [
+          "15a0c3af"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "cfd98cb5",
+      "output_agent_id": "e99d6963",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "3b69da6f"
+      ],
+      "generation": 4
+    },
+    {
+      "id": "58e0d8b1",
+      "agents": [
+        {
+          "id": "cf772db3",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "4c03cba8",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "83ce8f06",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "cf772db3": [
+          "4c03cba8"
+        ],
+        "4c03cba8": [
+          "83ce8f06"
+        ],
+        "83ce8f06": [
+          "4c03cba8"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "cf772db3",
+      "output_agent_id": "83ce8f06",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "38979e21"
+      ],
+      "generation": 5
+    },
+    {
+      "id": "13dece39",
+      "agents": [
+        {
+          "id": "a33ab3e7",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "cf8d496b",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7deb9514",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "a33ab3e7": [
+          "cf8d496b"
+        ],
+        "cf8d496b": [
+          "7deb9514"
+        ],
+        "7deb9514": [
+          "cf8d496b"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "a33ab3e7",
+      "output_agent_id": "7deb9514",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "58e0d8b1"
+      ],
+      "generation": 6
+    },
+    {
+      "id": "012537da",
+      "agents": [
+        {
+          "id": "0b3ee10b",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "d11c2b21",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "0b1d65aa",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "0b3ee10b": [
+          "d11c2b21"
+        ],
+        "d11c2b21": [
+          "0b1d65aa"
+        ],
+        "0b1d65aa": [
+          "d11c2b21"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "0b3ee10b",
+      "output_agent_id": "0b1d65aa",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "13dece39"
+      ],
+      "generation": 7
+    },
+    {
+      "id": "c82e1508",
+      "agents": [
+        {
+          "id": "5831d334",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "4192b35e",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "ea7b79f7",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "5831d334": [
+          "4192b35e"
+        ],
+        "4192b35e": [
+          "ea7b79f7"
+        ],
+        "ea7b79f7": [
+          "4192b35e"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "5831d334",
+      "output_agent_id": "ea7b79f7",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "012537da"
+      ],
+      "generation": 8
+    },
+    {
+      "id": "61d15973",
+      "agents": [
+        {
+          "id": "22d65eba",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "b5eba91b",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "41851a3e",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "22d65eba": [
+          "b5eba91b"
+        ],
+        "b5eba91b": [
+          "41851a3e"
+        ],
+        "41851a3e": [
+          "b5eba91b"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "22d65eba",
+      "output_agent_id": "41851a3e",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "c82e1508"
+      ],
+      "generation": 9
+    },
+    {
+      "id": "7143a523",
+      "agents": [
+        {
+          "id": "0edf454d",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "495c0093",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "0f4ff220",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "0edf454d": [
+          "495c0093"
+        ],
+        "495c0093": [
+          "0f4ff220"
+        ],
+        "0f4ff220": [
+          "495c0093"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "0edf454d",
+      "output_agent_id": "0f4ff220",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "61d15973"
+      ],
+      "generation": 10
+    },
+    {
+      "id": "edff044f",
+      "agents": [
+        {
+          "id": "cc66ef5b",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "4c2f8dcc",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "c465e8c3",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "cc66ef5b": [
+          "4c2f8dcc"
+        ],
+        "4c2f8dcc": [
+          "c465e8c3"
+        ],
+        "c465e8c3": [
+          "4c2f8dcc"
+        ]
+      },
+      "message_format": "freeform",
+      "max_message_length": 154,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "cc66ef5b",
+      "output_agent_id": "c465e8c3",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.9229754172957606,
+      "parent_ids": [
+        "7143a523"
+      ],
+      "generation": 11
+    }
+  ],
+  "total_tokens": 96900,
+  "total_api_calls": 2280,
+  "completed": true,
+  "final_best_fitness": 1.0,
+  "final_passed": 41,
+  "final_total": 41,
+  "best_genome": {
+    "id": "00d821fe",
+    "agents": [
+      {
+        "id": "3ecd3a4f",
+        "role": "tester",
+        "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "ad09fe62",
+        "role": "reviewer",
+        "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "63b9a484",
+        "role": "planner",
+        "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      }
+    ],
+    "topology": {
+      "3ecd3a4f": [
+        "ad09fe62"
+      ],
+      "ad09fe62": [
+        "63b9a484"
+      ],
+      "63b9a484": [
+        "ad09fe62"
+      ]
+    },
+    "message_format": "freeform",
+    "max_message_length": 154,
+    "aggregation_strategy": "hierarchical",
+    "entry_agent_id": "3ecd3a4f",
+    "output_agent_id": "63b9a484",
+    "max_rounds": 2,
+    "early_exit_confidence": 0.9229754172957606,
+    "parent_ids": [],
+    "generation": 0
+  },
+  "end_time": "2025-12-18T08:51:50.672763",
+  "total_time_seconds": 6126.057983160019
+}

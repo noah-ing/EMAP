@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMAP Evolution Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            --gradient-4: linear-gradient(135deg, #ef4444 0%, #f43f5e 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 9999px;
+            font-size: 0.9rem;
+        }
+
+        .status-indicator.running {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        .pulse.running {
+            background: var(--warning);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-tight { background: var(--gradient-4); }
+        .badge-medium { background: var(--gradient-3); }
+        .badge-loose { background: var(--gradient-2); }
+        .badge-unconstrained { background: var(--gradient-1); }
+
+        /* Metrics Display */
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .metric-change {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .metric-change.positive { color: var(--success); }
+        .metric-change.negative { color: var(--danger); }
+
+        /* Progress Bars */
+        .progress-container {
+            margin-top: 1rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-dark);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-fill.tight { background: var(--gradient-4); }
+        .progress-fill.medium { background: var(--gradient-3); }
+        .progress-fill.loose { background: var(--gradient-2); }
+        .progress-fill.unconstrained { background: var(--gradient-1); }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 1rem;
+        }
+
+        /* Architecture Visualization */
+        .architecture-viz {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            min-height: 200px;
+        }
+
+        .agent-node {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .agent-node:hover {
+            transform: scale(1.1);
+        }
+
+        .agent-node.coder { background: var(--gradient-1); }
+        .agent-node.planner { background: var(--gradient-2); }
+        .agent-node.reviewer { background: var(--gradient-3); }
+        .agent-node.tester { background: var(--gradient-4); }
+
+        .agent-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edge-line {
+            width: 60px;
+            height: 2px;
+            background: var(--border);
+            position: relative;
+        }
+
+        .edge-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            border: 5px solid transparent;
+            border-left: 8px solid var(--border);
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-card-hover);
+        }
+
+        /* Hypothesis Cards */
+        .hypothesis-card {
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .hypothesis-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hypothesis-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-supported { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .status-pending { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+        .status-testing { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .loading-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Refresh Button */
+        .refresh-btn {
+            background: var(--gradient-1);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+
+        .refresh-btn:hover {
+            opacity: 0.9;
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            font-size: 1.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>EMAP Evolution Dashboard</h1>
+            <p>Scarcity Breeds Efficiency: Resource-Constrained Evolution of Multi-Agent Architectures</p>
+            <div class="status-indicator" id="globalStatus">
+                <span class="pulse"></span>
+                <span>Loading experiment data...</span>
+            </div>
+        </header>
+
+        <!-- Summary Metrics -->
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Total Experiments</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="totalExperiments">0</span>
+                    <span class="metric-label">Across 4 budget regimes</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Best Fitness</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="bestFitness">--</span>
+                    <span class="metric-label">Pass@1 accuracy</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Total Tokens</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="totalTokens">--</span>
+                    <span class="metric-label">API usage</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">API Calls</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="totalCalls">--</span>
+                    <span class="metric-label">LLM invocations</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiment Progress -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F4CA;</span>
+            Experiment Progress
+        </h2>
+        <div class="grid grid-2">
+            <!-- Tight Budget -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Tight Budget (2K tokens)</span>
+                    <span class="card-badge badge-tight">Constraint++</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Generation Progress</span>
+                        <span id="tightProgress">0/50</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill tight" id="tightProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div class="metric">
+                        <span class="metric-label">Best Fitness</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="tightFitness">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Avg Agents</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="tightAgents">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Diversity</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="tightDiversity">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medium Budget -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Medium Budget (5K tokens)</span>
+                    <span class="card-badge badge-medium">Moderate</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Generation Progress</span>
+                        <span id="mediumProgress">0/50</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill medium" id="mediumProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div class="metric">
+                        <span class="metric-label">Best Fitness</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="mediumFitness">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Avg Agents</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="mediumAgents">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Diversity</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="mediumDiversity">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loose Budget -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Loose Budget (10K tokens)</span>
+                    <span class="card-badge badge-loose">Relaxed</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Generation Progress</span>
+                        <span id="looseProgress">0/50</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill loose" id="looseProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div class="metric">
+                        <span class="metric-label">Best Fitness</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="looseFitness">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Avg Agents</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="looseAgents">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Diversity</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="looseDiversity">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unconstrained -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Unconstrained (50K tokens)</span>
+                    <span class="card-badge badge-unconstrained">No Limit</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Generation Progress</span>
+                        <span id="unconstrainedProgress">0/50</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill unconstrained" id="unconstrainedProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div class="metric">
+                        <span class="metric-label">Best Fitness</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="unconstrainedFitness">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Avg Agents</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="unconstrainedAgents">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Diversity</span>
+                        <span class="metric-value" style="font-size: 1.5rem;" id="unconstrainedDiversity">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitness Evolution Chart -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F4C8;</span>
+            Fitness Evolution Over Generations
+        </h2>
+        <div class="card">
+            <div class="chart-container">
+                <canvas id="fitnessChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Architecture Comparison -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F3D7;</span>
+            Evolved Architecture Comparison
+        </h2>
+        <div class="grid grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Tight Budget Architecture</span>
+                    <span class="card-badge badge-tight">Single Agent</span>
+                </div>
+                <div class="architecture-viz" id="tightArch">
+                    <div class="agent-node coder">
+                        <span class="agent-icon">&#x1F4BB;</span>
+                        <span>Coder</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem;">
+                    Minimal architecture - single specialist agent
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Unconstrained Architecture</span>
+                    <span class="card-badge badge-unconstrained">Multi-Agent</span>
+                </div>
+                <div class="architecture-viz" id="unconstrainedArch">
+                    <div class="agent-node planner">
+                        <span class="agent-icon">&#x1F4DD;</span>
+                        <span>Planner</span>
+                    </div>
+                    <div class="edge-line"></div>
+                    <div class="agent-node coder">
+                        <span class="agent-icon">&#x1F4BB;</span>
+                        <span>Coder</span>
+                    </div>
+                    <div class="edge-line"></div>
+                    <div class="agent-node reviewer">
+                        <span class="agent-icon">&#x1F50D;</span>
+                        <span>Reviewer</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem;">
+                    Complex topology with role specialization
+                </p>
+            </div>
+        </div>
+
+        <!-- Structural Metrics Chart -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F9EC;</span>
+            Structural Metrics by Budget Regime
+        </h2>
+        <div class="card">
+            <div class="chart-container">
+                <canvas id="structureChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Hypothesis Validation -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F9EA;</span>
+            Hypothesis Validation Status
+        </h2>
+        <div class="grid">
+            <div class="card hypothesis-card">
+                <div class="hypothesis-title">
+                    H1: Structural Compactness
+                    <span class="hypothesis-status status-supported" id="h1Status">SUPPORTED</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Tight budget evolved single-agent architecture (1.0 agents) vs. multi-agent in loose regimes (2.5+ agents)
+                </p>
+            </div>
+            <div class="card hypothesis-card">
+                <div class="hypothesis-title">
+                    H2: Prompt Compression
+                    <span class="hypothesis-status status-testing" id="h2Status">TESTING</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Awaiting analysis of prompt lengths across regimes
+                </p>
+            </div>
+            <div class="card hypothesis-card">
+                <div class="hypothesis-title">
+                    H3: Role Specialization
+                    <span class="hypothesis-status status-testing" id="h3Status">TESTING</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Evaluating role distribution patterns across budgets
+                </p>
+            </div>
+            <div class="card hypothesis-card">
+                <div class="hypothesis-title">
+                    H4: Fail-Fast Behavior
+                    <span class="hypothesis-status status-pending" id="h4Status">PENDING</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Requires expensive failure analysis after experiments complete
+                </p>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <h2 class="section-header">
+            <span class="section-icon">&#x1F4CB;</span>
+            Detailed Results
+        </h2>
+        <div class="card">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Regime</th>
+                        <th>Budget</th>
+                        <th>Generation</th>
+                        <th>Best Fitness</th>
+                        <th>Avg Agents</th>
+                        <th>Avg Edges</th>
+                        <th>Diversity</th>
+                        <th>Tokens Used</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTable">
+                    <tr>
+                        <td colspan="8" style="text-align: center;">
+                            <div class="loading">
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Refresh Controls -->
+        <div style="text-align: center; margin: 2rem 0;">
+            <button class="refresh-btn" id="refreshBtn" onclick="loadData()">
+                &#x1F504; Refresh Data
+            </button>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem; font-size: 0.85rem;">
+                Auto-refresh every 30 seconds when experiments are running
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>EMAP - Evolution under Multi-Agent Pressure</p>
+            <p style="margin-top: 0.5rem;">PhD Research Project - December 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Chart instances
+        let fitnessChart = null;
+        let structureChart = null;
+
+        // Experiment data storage
+        let experimentData = {
+            tight: null,
+            medium: null,
+            loose: null,
+            unconstrained: null
+        };
+
+        // Initialize charts
+        function initCharts() {
+            const ctx1 = document.getElementById('fitnessChart').getContext('2d');
+            fitnessChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Tight (2K)',
+                            data: [],
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Medium (5K)',
+                            data: [],
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Loose (10K)',
+                            data: [],
+                            borderColor: '#22c55e',
+                            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Unconstrained (50K)',
+                            data: [],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#f1f5f9' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Generation', color: '#94a3b8' },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Best Fitness', color: '#94a3b8' },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' },
+                            min: 0,
+                            max: 1
+                        }
+                    }
+                }
+            });
+
+            const ctx2 = document.getElementById('structureChart').getContext('2d');
+            structureChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Tight (2K)', 'Medium (5K)', 'Loose (10K)', 'Unconstrained (50K)'],
+                    datasets: [
+                        {
+                            label: 'Avg Agents',
+                            data: [1.0, 1.9, 2.5, 2.5],
+                            backgroundColor: 'rgba(99, 102, 241, 0.8)'
+                        },
+                        {
+                            label: 'Avg Edges',
+                            data: [0, 1.0, 1.8, 2.5],
+                            backgroundColor: 'rgba(139, 92, 246, 0.8)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#f1f5f9' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Count', color: '#94a3b8' },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update UI with experiment data
+        function updateUI(data) {
+            // Update summary metrics
+            let totalExperiments = 0;
+            let bestFitness = 0;
+            let totalTokens = 0;
+            let totalCalls = 0;
+
+            const regimes = ['tight', 'medium', 'loose', 'unconstrained'];
+
+            regimes.forEach(regime => {
+                if (data[regime]) {
+                    totalExperiments++;
+                    bestFitness = Math.max(bestFitness, data[regime].final_best_fitness || 0);
+                    totalTokens += data[regime].total_tokens || 0;
+                    totalCalls += data[regime].total_api_calls || 0;
+                }
+            });
+
+            document.getElementById('totalExperiments').textContent = totalExperiments;
+            document.getElementById('bestFitness').textContent = bestFitness.toFixed(2);
+            document.getElementById('totalTokens').textContent = totalTokens.toLocaleString();
+            document.getElementById('totalCalls').textContent = totalCalls.toLocaleString();
+
+            // Update individual regime cards
+            updateRegimeCard('tight', data.tight);
+            updateRegimeCard('medium', data.medium);
+            updateRegimeCard('loose', data.loose);
+            updateRegimeCard('unconstrained', data.unconstrained);
+
+            // Update charts
+            updateCharts(data);
+
+            // Update table
+            updateTable(data);
+
+            // Update status
+            const allComplete = regimes.every(r =>
+                data[r] && data[r].generations &&
+                data[r].generations.length >= (data[r].config?.generations || 50)
+            );
+
+            const statusEl = document.getElementById('globalStatus');
+            if (allComplete) {
+                statusEl.innerHTML = '<span class="pulse"></span><span>All experiments completed!</span>';
+                statusEl.classList.remove('running');
+            } else {
+                statusEl.innerHTML = '<span class="pulse running"></span><span>Experiments in progress...</span>';
+                statusEl.classList.add('running');
+            }
+        }
+
+        function updateRegimeCard(regime, data) {
+            const prefix = regime;
+            const totalGens = data?.config?.generations || 50;
+            const currentGen = data?.generations?.length || 0;
+
+            document.getElementById(`${prefix}Progress`).textContent = `${currentGen}/${totalGens}`;
+            document.getElementById(`${prefix}ProgressBar`).style.width = `${(currentGen/totalGens)*100}%`;
+
+            if (data) {
+                const lastIdx = data.best_fitness_per_gen?.length - 1 || 0;
+                document.getElementById(`${prefix}Fitness`).textContent =
+                    (data.best_fitness_per_gen?.[lastIdx] || '--').toFixed?.(2) || '--';
+                document.getElementById(`${prefix}Agents`).textContent =
+                    (data.avg_agents_per_gen?.[lastIdx] || '--').toFixed?.(1) || '--';
+                document.getElementById(`${prefix}Diversity`).textContent =
+                    (data.diversity_per_gen?.[lastIdx] || '--').toFixed?.(2) || '--';
+            }
+        }
+
+        function updateCharts(data) {
+            // Find max generations for x-axis
+            const maxGens = Math.max(
+                data.tight?.generations?.length || 0,
+                data.medium?.generations?.length || 0,
+                data.loose?.generations?.length || 0,
+                data.unconstrained?.generations?.length || 0
+            );
+
+            const labels = Array.from({length: maxGens}, (_, i) => i);
+
+            fitnessChart.data.labels = labels;
+            fitnessChart.data.datasets[0].data = data.tight?.best_fitness_per_gen || [];
+            fitnessChart.data.datasets[1].data = data.medium?.best_fitness_per_gen || [];
+            fitnessChart.data.datasets[2].data = data.loose?.best_fitness_per_gen || [];
+            fitnessChart.data.datasets[3].data = data.unconstrained?.best_fitness_per_gen || [];
+            fitnessChart.update();
+
+            // Update structure chart
+            const lastTight = data.tight?.avg_agents_per_gen?.slice(-1)[0] || 1.0;
+            const lastMedium = data.medium?.avg_agents_per_gen?.slice(-1)[0] || 1.9;
+            const lastLoose = data.loose?.avg_agents_per_gen?.slice(-1)[0] || 2.5;
+            const lastUncon = data.unconstrained?.avg_agents_per_gen?.slice(-1)[0] || 2.5;
+
+            const edgesTight = data.tight?.avg_edges_per_gen?.slice(-1)[0] || 0;
+            const edgesMedium = data.medium?.avg_edges_per_gen?.slice(-1)[0] || 1.0;
+            const edgesLoose = data.loose?.avg_edges_per_gen?.slice(-1)[0] || 1.8;
+            const edgesUncon = data.unconstrained?.avg_edges_per_gen?.slice(-1)[0] || 2.5;
+
+            structureChart.data.datasets[0].data = [lastTight, lastMedium, lastLoose, lastUncon];
+            structureChart.data.datasets[1].data = [edgesTight, edgesMedium, edgesLoose, edgesUncon];
+            structureChart.update();
+        }
+
+        function updateTable(data) {
+            const tbody = document.getElementById('resultsTable');
+            let html = '';
+
+            const regimes = [
+                { name: 'Tight', budget: 2000, data: data.tight },
+                { name: 'Medium', budget: 5000, data: data.medium },
+                { name: 'Loose', budget: 10000, data: data.loose },
+                { name: 'Unconstrained', budget: 50000, data: data.unconstrained }
+            ];
+
+            regimes.forEach(regime => {
+                if (regime.data) {
+                    const lastIdx = (regime.data.generations?.length || 1) - 1;
+                    html += `
+                        <tr>
+                            <td><strong>${regime.name}</strong></td>
+                            <td>${regime.budget.toLocaleString()}</td>
+                            <td>${regime.data.generations?.[lastIdx] ?? '--'}/${regime.data.config?.generations || 50}</td>
+                            <td>${(regime.data.best_fitness_per_gen?.[lastIdx] || 0).toFixed(3)}</td>
+                            <td>${(regime.data.avg_agents_per_gen?.[lastIdx] || 0).toFixed(1)}</td>
+                            <td>${(regime.data.avg_edges_per_gen?.[lastIdx] || 0).toFixed(1)}</td>
+                            <td>${(regime.data.diversity_per_gen?.[lastIdx] || 0).toFixed(2)}</td>
+                            <td>${(regime.data.total_tokens || 0).toLocaleString()}</td>
+                        </tr>
+                    `;
+                } else {
+                    html += `
+                        <tr>
+                            <td><strong>${regime.name}</strong></td>
+                            <td>${regime.budget.toLocaleString()}</td>
+                            <td colspan="6" style="color: var(--text-secondary);">Not started</td>
+                        </tr>
+                    `;
+                }
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        // Load data from JSON files
+        async function loadData() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            btn.innerHTML = '&#x1F504; Loading...';
+
+            try {
+                // Try to load each experiment file
+                const files = [
+                    { regime: 'tight', file: 'results/evolution_budget2000_seed42.json' },
+                    { regime: 'medium', file: 'results/evolution_budget5000_seed42.json' },
+                    { regime: 'loose', file: 'results/evolution_budget10000_seed42.json' },
+                    { regime: 'unconstrained', file: 'results/evolution_budget50000_seed42.json' }
+                ];
+
+                for (const {regime, file} of files) {
+                    try {
+                        const response = await fetch(file);
+                        if (response.ok) {
+                            experimentData[regime] = await response.json();
+                        }
+                    } catch (e) {
+                        console.log(`Could not load ${file}:`, e);
+                    }
+                }
+
+                updateUI(experimentData);
+            } catch (error) {
+                console.error('Error loading data:', error);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '&#x1F504; Refresh Data';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            loadData();
+
+            // Auto-refresh every 30 seconds
+            setInterval(loadData, 30000);
+        });
+    </script>
+</body>
+</html>

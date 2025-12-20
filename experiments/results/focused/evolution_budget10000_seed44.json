@@ -1,0 +1,781 @@
+{
+  "budget": 10000,
+  "seed": 44,
+  "config": {
+    "budget": 10000,
+    "seed": 44,
+    "population_size": 10,
+    "generations": 12,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "mutation_rate": 0.4,
+    "crossover_rate": 0.5,
+    "sample_fraction": 0.12,
+    "final_sample_fraction": 0.25
+  },
+  "start_time": "2025-12-18T23:34:41.275333",
+  "best_fitness_per_gen": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "avg_fitness_per_gen": [
+    0.9421052631578947,
+    0.9736842105263157,
+    0.9736842105263157,
+    0.9631578947368421,
+    0.9578947368421054,
+    0.9631578947368421,
+    0.9578947368421051,
+    0.9947368421052631,
+    0.9789473684210526,
+    1.0,
+    0.9894736842105264,
+    1.0
+  ],
+  "diversity_per_gen": [
+    1.0,
+    0.6,
+    0.6,
+    0.7,
+    0.7,
+    0.8,
+    0.7,
+    0.5,
+    0.6,
+    0.5,
+    0.5,
+    0.3
+  ],
+  "avg_agents_per_gen": [
+    2.4,
+    2.0,
+    2.5,
+    3.2,
+    3.4,
+    3.4,
+    3.9,
+    4.3,
+    4.4,
+    4.5,
+    4.4,
+    4.3
+  ],
+  "avg_edges_per_gen": [
+    1.5,
+    1.1,
+    1.9,
+    2.5,
+    2.9,
+    3.0,
+    3.5,
+    4.0,
+    4.1,
+    4.5,
+    4.4,
+    4.4
+  ],
+  "best_genome_per_gen": [
+    {
+      "id": "c7b8d710",
+      "agents": [
+        {
+          "id": "d4b337f3",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "d4b337f3": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "d4b337f3",
+      "output_agent_id": "d4b337f3",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [],
+      "generation": 0
+    },
+    {
+      "id": "acb21bdb",
+      "agents": [
+        {
+          "id": "58645387",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "58645387": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "58645387",
+      "output_agent_id": "58645387",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "c7b8d710"
+      ],
+      "generation": 1
+    },
+    {
+      "id": "28551e42",
+      "agents": [
+        {
+          "id": "488cdd89",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "3cfd8d1d",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "488cdd89": [
+          "3cfd8d1d"
+        ],
+        "3cfd8d1d": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "488cdd89",
+      "output_agent_id": "3cfd8d1d",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "fb3e80d2"
+      ],
+      "generation": 2
+    },
+    {
+      "id": "c9410e37",
+      "agents": [
+        {
+          "id": "8bd3d205",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7a0156e7",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "8bd3d205": [
+          "7a0156e7"
+        ],
+        "7a0156e7": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "8bd3d205",
+      "output_agent_id": "7a0156e7",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "28551e42"
+      ],
+      "generation": 3
+    },
+    {
+      "id": "5ff713cb",
+      "agents": [
+        {
+          "id": "2ee69dd0",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "42525973",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "f5f824c8",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "1f6077c9",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "2ee69dd0": [],
+        "42525973": [
+          "2ee69dd0"
+        ],
+        "f5f824c8": [
+          "2ee69dd0"
+        ],
+        "1f6077c9": [
+          "f5f824c8"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "2ee69dd0",
+      "output_agent_id": "f5f824c8",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7994917741371868,
+      "parent_ids": [
+        "db2c29d3",
+        "95ed1221"
+      ],
+      "generation": 9
+    },
+    {
+      "id": "25215252",
+      "agents": [
+        {
+          "id": "241fda01",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "459538f8",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "f4e68f47",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "4d8a77b3",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "241fda01": [
+          "459538f8"
+        ],
+        "459538f8": [
+          "241fda01"
+        ],
+        "f4e68f47": [
+          "459538f8"
+        ],
+        "4d8a77b3": [
+          "459538f8"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "241fda01",
+      "output_agent_id": "f4e68f47",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "d3702ead"
+      ],
+      "generation": 11
+    },
+    {
+      "id": "73673c2f",
+      "agents": [
+        {
+          "id": "a77436ed",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "9c01a4cc",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "52feddc1",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "5093cb6c",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "a77436ed": [
+          "9c01a4cc"
+        ],
+        "9c01a4cc": [
+          "a77436ed"
+        ],
+        "52feddc1": [
+          "9c01a4cc"
+        ],
+        "5093cb6c": [
+          "9c01a4cc"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "a77436ed",
+      "output_agent_id": "52feddc1",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "25215252"
+      ],
+      "generation": 12
+    },
+    {
+      "id": "44a5b98c",
+      "agents": [
+        {
+          "id": "b53951eb",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "d5c64d42",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "75188760",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "cf4481e0",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "b53951eb": [
+          "d5c64d42"
+        ],
+        "d5c64d42": [
+          "b53951eb"
+        ],
+        "75188760": [
+          "d5c64d42"
+        ],
+        "cf4481e0": [
+          "d5c64d42"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "b53951eb",
+      "output_agent_id": "75188760",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "73673c2f"
+      ],
+      "generation": 13
+    },
+    {
+      "id": "a3456acb",
+      "agents": [
+        {
+          "id": "32f2ca1c",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "50aa4b81",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "c5c5e9c2",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "f39566dc",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "32f2ca1c": [
+          "50aa4b81"
+        ],
+        "50aa4b81": [
+          "32f2ca1c"
+        ],
+        "c5c5e9c2": [
+          "50aa4b81"
+        ],
+        "f39566dc": [
+          "50aa4b81"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "32f2ca1c",
+      "output_agent_id": "c5c5e9c2",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "44a5b98c"
+      ],
+      "generation": 14
+    },
+    {
+      "id": "5035585f",
+      "agents": [
+        {
+          "id": "44b183db",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "c6982603",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "43ed0a9e",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "c9a8751e",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "44b183db": [
+          "c6982603"
+        ],
+        "c6982603": [
+          "44b183db"
+        ],
+        "43ed0a9e": [
+          "c6982603"
+        ],
+        "c9a8751e": [
+          "c6982603"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "44b183db",
+      "output_agent_id": "43ed0a9e",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "a3456acb"
+      ],
+      "generation": 15
+    },
+    {
+      "id": "100294a0",
+      "agents": [
+        {
+          "id": "1078f9f5",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "570ea2ff",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "b4999ecb",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "58d81507",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "1078f9f5": [
+          "570ea2ff"
+        ],
+        "570ea2ff": [
+          "1078f9f5"
+        ],
+        "b4999ecb": [
+          "570ea2ff"
+        ],
+        "58d81507": [
+          "570ea2ff"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "1078f9f5",
+      "output_agent_id": "b4999ecb",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "5035585f"
+      ],
+      "generation": 16
+    },
+    {
+      "id": "5a52bf80",
+      "agents": [
+        {
+          "id": "c1ba14ce",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "bc7090b4",
+          "role": "tester",
+          "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "19eec796",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "08936e20",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "c1ba14ce": [
+          "bc7090b4"
+        ],
+        "bc7090b4": [
+          "c1ba14ce"
+        ],
+        "19eec796": [
+          "bc7090b4"
+        ],
+        "08936e20": [
+          "bc7090b4"
+        ]
+      },
+      "message_format": "structured",
+      "max_message_length": 219,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "c1ba14ce",
+      "output_agent_id": "19eec796",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.7998293434157818,
+      "parent_ids": [
+        "100294a0"
+      ],
+      "generation": 17
+    }
+  ],
+  "total_tokens": 482307,
+  "total_api_calls": 2280,
+  "completed": true,
+  "final_best_fitness": 1.0,
+  "final_passed": 41,
+  "final_total": 41,
+  "best_genome": {
+    "id": "5ff713cb",
+    "agents": [
+      {
+        "id": "2ee69dd0",
+        "role": "planner",
+        "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "42525973",
+        "role": "architect",
+        "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "f5f824c8",
+        "role": "coder",
+        "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "1f6077c9",
+        "role": "tester",
+        "system_prompt": "You are a testing agent. Write comprehensive test cases that cover edge cases and validate correctness.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      }
+    ],
+    "topology": {
+      "2ee69dd0": [],
+      "42525973": [
+        "2ee69dd0"
+      ],
+      "f5f824c8": [
+        "2ee69dd0"
+      ],
+      "1f6077c9": [
+        "f5f824c8"
+      ]
+    },
+    "message_format": "structured",
+    "max_message_length": 219,
+    "aggregation_strategy": "hierarchical",
+    "entry_agent_id": "2ee69dd0",
+    "output_agent_id": "f5f824c8",
+    "max_rounds": 3,
+    "early_exit_confidence": 0.7994917741371868,
+    "parent_ids": [
+      "db2c29d3",
+      "95ed1221"
+    ],
+    "generation": 9
+  },
+  "end_time": "2025-12-19T04:44:22.162172",
+  "total_time_seconds": 18580.886852264404
+}

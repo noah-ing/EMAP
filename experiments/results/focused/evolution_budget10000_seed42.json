@@ -1,0 +1,705 @@
+{
+  "budget": 10000,
+  "seed": 42,
+  "config": {
+    "budget": 10000,
+    "seed": 42,
+    "population_size": 10,
+    "generations": 12,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "mutation_rate": 0.4,
+    "crossover_rate": 0.5,
+    "sample_fraction": 0.12,
+    "final_sample_fraction": 0.25
+  },
+  "start_time": "2025-12-18T19:52:35.874725",
+  "best_fitness_per_gen": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "avg_fitness_per_gen": [
+    0.968421052631579,
+    0.9315789473684211,
+    0.905263157894737,
+    0.9736842105263157,
+    0.9736842105263157,
+    0.9578947368421054,
+    0.9789473684210526,
+    0.9842105263157895,
+    0.9736842105263157,
+    0.9894736842105264,
+    1.0,
+    1.0
+  ],
+  "diversity_per_gen": [
+    1.0,
+    0.7,
+    0.8,
+    0.6,
+    0.6,
+    0.4,
+    0.5,
+    0.4,
+    0.5,
+    0.4,
+    0.4,
+    0.4
+  ],
+  "avg_agents_per_gen": [
+    2.1,
+    2.5,
+    2.0,
+    1.9,
+    1.7,
+    1.5,
+    1.8,
+    2.0,
+    2.1,
+    2.5,
+    2.8,
+    3.2
+  ],
+  "avg_edges_per_gen": [
+    1.2,
+    1.4,
+    1.0,
+    0.7,
+    0.7,
+    0.6,
+    1.0,
+    1.2,
+    1.1,
+    1.5,
+    1.7,
+    2.3
+  ],
+  "best_genome_per_gen": [
+    {
+      "id": "5d41644f",
+      "agents": [
+        {
+          "id": "c2e98935",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "c2e98935": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "c2e98935",
+      "output_agent_id": "c2e98935",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [],
+      "generation": 0
+    },
+    {
+      "id": "3c4ffe77",
+      "agents": [
+        {
+          "id": "0cdb3698",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "3cb0389f",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "62dcaaa7",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "d0159dcb",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "0cdb3698": [],
+        "3cb0389f": [
+          "d0159dcb"
+        ],
+        "62dcaaa7": [
+          "3cb0389f",
+          "d0159dcb"
+        ],
+        "d0159dcb": []
+      },
+      "message_format": "structured",
+      "max_message_length": 193,
+      "aggregation_strategy": "voting",
+      "entry_agent_id": "0cdb3698",
+      "output_agent_id": "0cdb3698",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.8786624821822562,
+      "parent_ids": [
+        "11091e6b"
+      ],
+      "generation": 3
+    },
+    {
+      "id": "770a739e",
+      "agents": [
+        {
+          "id": "81621c26",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "794dbf18",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "609c054e",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "81621c26": [
+          "609c054e"
+        ],
+        "794dbf18": [],
+        "609c054e": []
+      },
+      "message_format": "structured",
+      "max_message_length": 255,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "81621c26",
+      "output_agent_id": "81621c26",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.8386461967539587,
+      "parent_ids": [
+        "cf43d808",
+        "10b0b1d8"
+      ],
+      "generation": 4
+    },
+    {
+      "id": "858fb974",
+      "agents": [
+        {
+          "id": "9f7a9907",
+          "role": "generalist",
+          "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "a86d5f28",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "0f4e234a",
+          "role": "architect",
+          "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "9f7a9907": [
+          "0f4e234a"
+        ],
+        "a86d5f28": [],
+        "0f4e234a": []
+      },
+      "message_format": "structured",
+      "max_message_length": 255,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "9f7a9907",
+      "output_agent_id": "9f7a9907",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.8386461967539587,
+      "parent_ids": [
+        "770a739e"
+      ],
+      "generation": 5
+    },
+    {
+      "id": "a95351a7",
+      "agents": [
+        {
+          "id": "8a7b7a48",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "8a7b7a48": []
+      },
+      "message_format": "structured",
+      "max_message_length": 200,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "8a7b7a48",
+      "output_agent_id": "8a7b7a48",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.9,
+      "parent_ids": [
+        "15c89c4d"
+      ],
+      "generation": 5
+    },
+    {
+      "id": "fd7fb0f5",
+      "agents": [
+        {
+          "id": "2369bc4b",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "88153898",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "33487aba",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "2369bc4b": [
+          "88153898"
+        ],
+        "88153898": [
+          "33487aba"
+        ],
+        "33487aba": []
+      },
+      "message_format": "structured",
+      "max_message_length": 188,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "2369bc4b",
+      "output_agent_id": "33487aba",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.8498365161804714,
+      "parent_ids": [
+        "172d8f12"
+      ],
+      "generation": 10
+    },
+    {
+      "id": "54486165",
+      "agents": [
+        {
+          "id": "b9dc62e5",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7862b9ca",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "10f6ebd9",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "b9dc62e5": [
+          "7862b9ca"
+        ],
+        "7862b9ca": [
+          "10f6ebd9"
+        ],
+        "10f6ebd9": []
+      },
+      "message_format": "structured",
+      "max_message_length": 188,
+      "aggregation_strategy": "sequential",
+      "entry_agent_id": "b9dc62e5",
+      "output_agent_id": "10f6ebd9",
+      "max_rounds": 3,
+      "early_exit_confidence": 0.8498365161804714,
+      "parent_ids": [
+        "fd7fb0f5"
+      ],
+      "generation": 11
+    },
+    {
+      "id": "de87035d",
+      "agents": [
+        {
+          "id": "38ffa129",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "b62506df",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "9f3cb305",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "38ffa129": [
+          "b62506df"
+        ],
+        "b62506df": [
+          "9f3cb305"
+        ],
+        "9f3cb305": []
+      },
+      "message_format": "freeform",
+      "max_message_length": 194,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "38ffa129",
+      "output_agent_id": "9f3cb305",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.881933189019412,
+      "parent_ids": [
+        "1c918894"
+      ],
+      "generation": 15
+    },
+    {
+      "id": "ed391b0d",
+      "agents": [
+        {
+          "id": "afbb9279",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "2cfa70f5",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "618de485",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "afbb9279": [
+          "2cfa70f5"
+        ],
+        "2cfa70f5": [
+          "618de485"
+        ],
+        "618de485": []
+      },
+      "message_format": "freeform",
+      "max_message_length": 194,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "afbb9279",
+      "output_agent_id": "618de485",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.881933189019412,
+      "parent_ids": [
+        "de87035d"
+      ],
+      "generation": 16
+    },
+    {
+      "id": "cbeec642",
+      "agents": [
+        {
+          "id": "e12f936d",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "7eb47c8d",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "b323e76e",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "e12f936d": [
+          "7eb47c8d"
+        ],
+        "7eb47c8d": [
+          "b323e76e"
+        ],
+        "b323e76e": []
+      },
+      "message_format": "freeform",
+      "max_message_length": 194,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "e12f936d",
+      "output_agent_id": "b323e76e",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.881933189019412,
+      "parent_ids": [
+        "ed391b0d"
+      ],
+      "generation": 17
+    },
+    {
+      "id": "d61cbf26",
+      "agents": [
+        {
+          "id": "06f866cb",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "b3f94c17",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "db474727",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "06f866cb": [
+          "b3f94c17"
+        ],
+        "b3f94c17": [
+          "db474727"
+        ],
+        "db474727": []
+      },
+      "message_format": "freeform",
+      "max_message_length": 194,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "06f866cb",
+      "output_agent_id": "db474727",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.881933189019412,
+      "parent_ids": [
+        "cbeec642"
+      ],
+      "generation": 18
+    },
+    {
+      "id": "da763b2f",
+      "agents": [
+        {
+          "id": "d0cee7eb",
+          "role": "planner",
+          "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "ef41de8b",
+          "role": "coder",
+          "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        },
+        {
+          "id": "edb3c1c3",
+          "role": "reviewer",
+          "system_prompt": "You are a code review agent. Analyze code for bugs, edge cases, and improvements. Be specific about issues found.",
+          "max_response_tokens": 500,
+          "tools": [],
+          "temperature": 0.7
+        }
+      ],
+      "topology": {
+        "d0cee7eb": [
+          "ef41de8b"
+        ],
+        "ef41de8b": [
+          "edb3c1c3"
+        ],
+        "edb3c1c3": []
+      },
+      "message_format": "freeform",
+      "max_message_length": 194,
+      "aggregation_strategy": "hierarchical",
+      "entry_agent_id": "d0cee7eb",
+      "output_agent_id": "edb3c1c3",
+      "max_rounds": 2,
+      "early_exit_confidence": 0.881933189019412,
+      "parent_ids": [
+        "d61cbf26"
+      ],
+      "generation": 19
+    }
+  ],
+  "total_tokens": 301519,
+  "total_api_calls": 2280,
+  "completed": true,
+  "final_best_fitness": 0.9512195121951219,
+  "final_passed": 39,
+  "final_total": 41,
+  "best_genome": {
+    "id": "3c4ffe77",
+    "agents": [
+      {
+        "id": "0cdb3698",
+        "role": "planner",
+        "system_prompt": "You are a planning agent. Break down programming tasks into clear, actionable steps. Output a numbered plan.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "3cb0389f",
+        "role": "generalist",
+        "system_prompt": "You are a programming assistant. Solve the given task by writing correct, efficient Python code.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "62dcaaa7",
+        "role": "architect",
+        "system_prompt": "You are an architecture agent. Design the overall structure and approach before implementation begins.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      },
+      {
+        "id": "d0159dcb",
+        "role": "coder",
+        "system_prompt": "You are a coding agent. Write clean, correct Python code that solves the given task. Include necessary imports.",
+        "max_response_tokens": 500,
+        "tools": [],
+        "temperature": 0.7
+      }
+    ],
+    "topology": {
+      "0cdb3698": [],
+      "3cb0389f": [
+        "d0159dcb"
+      ],
+      "62dcaaa7": [
+        "3cb0389f",
+        "d0159dcb"
+      ],
+      "d0159dcb": []
+    },
+    "message_format": "structured",
+    "max_message_length": 193,
+    "aggregation_strategy": "voting",
+    "entry_agent_id": "0cdb3698",
+    "output_agent_id": "0cdb3698",
+    "max_rounds": 2,
+    "early_exit_confidence": 0.8786624821822562,
+    "parent_ids": [
+      "11091e6b"
+    ],
+    "generation": 3
+  },
+  "end_time": "2025-12-18T23:34:39.924772",
+  "total_time_seconds": 13324.050099134445
+}
