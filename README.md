@@ -171,6 +171,23 @@ class MultiAgentGenome:
 
 **RQ3 & RQ4 (Future Work):** Transfer to abundance and cross-benchmark generalization remain to be tested.
 
+## Broader Implications
+
+Our findings suggest something counterintuitive: constraints may be features, not bugs. The dominant paradigm in AI development is to maximize resources during training and optimization, then compress or distill afterward. But biological evolution tells a different story - organisms that evolved under scarcity develop fundamentally different adaptations than those subjected to scarcity after the fact. A desert plant has different anatomy than a rainforest plant experiencing drought.
+
+We observe an analogous phenomenon in multi-agent architectures. Under budget pressure, evolution discovers cyclic feedback topologies, compressed message formats, and aggressive early-exit strategies. Remove that pressure, and evolution converges toward simpler linear pipelines. The constraint doesn't just filter solutions - it shapes the search process itself, maintaining diversity and preventing premature convergence to local optima.
+
+This has implications beyond code generation. As LLM costs and environmental impact come under scrutiny, the ability to evolve efficient architectures under realistic constraints becomes increasingly valuable. Rather than designing for abundance and hoping efficiency follows, we can design for scarcity and let evolution discover what's truly necessary.
+
+## Future Directions
+
+- **Progressive constraints**: Curriculum learning for resource limits - start loose, tighten gradually
+- **Multi-constraint evolution**: Simultaneously optimize for tokens, latency, and memory
+- **Cross-benchmark transfer**: Do HumanEval-evolved architectures generalize to MBPP or SWE-bench?
+- **Prompt co-evolution**: Allow agent prompts to mutate alongside topology
+- **Meta-evolution**: Evolve the evolutionary process itself - mutation rates, selection pressure, constraint schedules
+- **Cross-model transfer**: Do architectures evolved on GPT-4o-mini transfer to Claude, Gemini, or open-source models?
+
 ## Citation
 
 ```bibtex
