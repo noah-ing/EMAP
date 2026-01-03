@@ -26,10 +26,10 @@ We conducted 12 experiments across 4 budget regimes (TIGHT 2K, MEDIUM 5K, LOOSE 
 1. **Evolution consistently produces 3-agent architectures** regardless of constraint severity, contradicting the hypothesis that tight constraints would favor minimal single-agent systems.
 
 2. **Multiple viable topologies emerge** - evolution discovered diverse architectures achieving equivalent performance:
-   - Traditional pipeline (planner → coder → reviewer)
-   - Test-first pipeline (tester → reviewer → planner)
-   - Hybrid architecture (generalist → coder → architect)
-   - Hierarchical 4-agent systems under loose constraints
+ - Traditional pipeline (planner -> coder -> reviewer)
+ - Test-first pipeline (tester -> reviewer -> planner)
+ - Hybrid architecture (generalist -> coder -> architect)
+ - Hierarchical 4-agent systems under loose constraints
 
 3. **Budget constraints preserve diversity** - under constrained regimes, different seeds produce different topologies (linear vs cyclic). Without constraints, evolution converges toward simpler linear solutions.
 
