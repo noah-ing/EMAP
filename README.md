@@ -26,10 +26,10 @@ We conducted 12 experiments across 4 budget regimes (TIGHT 2K, MEDIUM 5K, LOOSE 
 1. **Evolution consistently produces 3-agent architectures** regardless of constraint severity, contradicting the hypothesis that tight constraints would favor minimal single-agent systems.
 
 2. **Multiple viable topologies emerge** - evolution discovered diverse architectures achieving equivalent performance:
-   - Traditional pipeline (planner → coder → reviewer)
-   - Test-first pipeline (tester → reviewer → planner)
-   - Hybrid architecture (generalist → coder → architect)
-   - Hierarchical 4-agent systems under loose constraints
+ - Traditional pipeline (planner -> coder -> reviewer)
+ - Test-first pipeline (tester -> reviewer -> planner)
+ - Hybrid architecture (generalist -> coder -> architect)
+ - Hierarchical 4-agent systems under loose constraints
 
 3. **Budget constraints preserve diversity** - under constrained regimes, different seeds produce different topologies (linear vs cyclic). Without constraints, evolution converges toward simpler linear solutions.
 
@@ -63,10 +63,10 @@ cp .env.example .env
 
 ```bash
 python experiments/run_evolution_experiments.py \
-    --budget 5000 \
-    --seed 42 \
-    --generations 12 \
-    --population 10
+ --budget 5000 \
+ --seed 42 \
+ --generations 12 \
+ --population 10
 ```
 
 ### Run Tests
@@ -88,9 +88,9 @@ executor = MultiAgentExecutor(backend, default_budget=5000)
 genome = create_pipeline([AgentRole.PLANNER, AgentRole.CODER, AgentRole.REVIEWER])
 
 result = asyncio.run(executor.execute(
-    genome=genome,
-    task="Write a function that returns the factorial of n",
-    token_budget=5000
+ genome=genome,
+ task="Write a function that returns the factorial of n",
+ token_budget=5000
 ))
 
 print(f"Output: {result.final_output}")
@@ -102,24 +102,24 @@ print(f"Tokens: {result.total_tokens_used}")
 ```
 E_M_A_P/
 ├── src/emap/
-│   ├── genome/
-│   │   ├── representation.py    # MultiAgentGenome, AgentGene
-│   │   └── operators.py         # Mutation, crossover operators
-│   ├── evolution/
-│   │   ├── fitness.py           # Hard budget constraint evaluation
-│   │   ├── selection.py         # Tournament, roulette, elitist selection
-│   │   └── integrated_eval.py   # Full evolution pipeline
-│   ├── agents/
-│   │   └── executor.py          # LLM backends and message routing
-│   └── benchmarks/
-│       ├── humaneval.py         # HumanEval loader
-│       └── sandbox.py           # Safe code execution
+│ ├── genome/
+│ │ ├── representation.py # MultiAgentGenome, AgentGene
+│ │ └── operators.py # Mutation, crossover operators
+│ ├── evolution/
+│ │ ├── fitness.py # Hard budget constraint evaluation
+│ │ ├── selection.py # Tournament, roulette, elitist selection
+│ │ └── integrated_eval.py # Full evolution pipeline
+│ ├── agents/
+│ │ └── executor.py # LLM backends and message routing
+│ └── benchmarks/
+│ ├── humaneval.py # HumanEval loader
+│ └── sandbox.py # Safe code execution
 ├── experiments/
-│   ├── run_evolution_experiments.py
-│   └── results/                 # Experiment JSON outputs
+│ ├── run_evolution_experiments.py
+│ └── results/ # Experiment JSON outputs
 ├── paper/
-│   ├── main.tex                 # Research paper
-│   └── references.bib           # Bibliography
+│ ├── main.tex # Research paper
+│ └── references.bib # Bibliography
 └── tests/
 ```
 
@@ -131,11 +131,11 @@ Unlike Pareto-based approaches that trade off accuracy against cost, EMAP enforc
 
 ```python
 def fitness(architecture, benchmark, budget):
-    for task in benchmark:
-        output, tokens = execute(architecture, task)
-        if tokens > budget:
-            return 0.0  # Zero fitness for budget violation
-    return accuracy(outputs, benchmark)
+ for task in benchmark:
+ output, tokens = execute(architecture, task)
+ if tokens > budget:
+ return 0.0 # Zero fitness for budget violation
+ return accuracy(outputs, benchmark)
 ```
 
 This creates genuine evolutionary pressure - architectures must adapt to constraints, not simply accept lower performance.
@@ -145,12 +145,12 @@ This creates genuine evolutionary pressure - architectures must adapt to constra
 ```python
 @dataclass
 class MultiAgentGenome:
-    agents: List[AgentGene]           # Agents with roles and prompts
-    topology: Dict[str, List[str]]    # Communication graph (adjacency list)
-    message_format: MessageFormat     # STRUCTURED, FREEFORM, or MINIMAL
-    aggregation_strategy: AggregationStrategy
-    max_rounds: int
-    early_exit_confidence: float
+ agents: List[AgentGene] # Agents with roles and prompts
+ topology: Dict[str, List[str]] # Communication graph (adjacency list)
+ message_format: MessageFormat # STRUCTURED, FREEFORM, or MINIMAL
+ aggregation_strategy: AggregationStrategy
+ max_rounds: int
+ early_exit_confidence: float
 ```
 
 ### Mutation Operators
@@ -192,11 +192,11 @@ This has implications beyond code generation. As LLM costs and environmental imp
 
 ```bibtex
 @article{ingwers2025emap,
-  title={Scarcity Breeds Efficiency: Resource-Constrained Evolution of
-         Multi-Agent Programming Architectures},
-  author={Ingwers, Noah},
-  journal={arXiv preprint},
-  year={2025}
+ title={Scarcity Breeds Efficiency: Resource-Constrained Evolution of
+ Multi-Agent Programming Architectures},
+ author={Ingwers, Noah},
+ journal={arXiv preprint},
+ year={2025}
 }
 ```
 
