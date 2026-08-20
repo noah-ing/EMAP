@@ -1,4 +1,4 @@
-"""Tests for agent execution and sandbox."""
+"""Tests for agent execution and the subprocess evaluation harness."""
 
 import pytest
 import asyncio
@@ -23,6 +23,7 @@ from emap.benchmarks.sandbox import (
     check_code_safety,
     ExecutionOutcome,
 )
+from emap.benchmarks import sandbox as sandbox_module
 
 
 class TestMockBackend:
@@ -146,8 +147,8 @@ class TestMultiAgentExecutor:
         assert "total_tokens_used" in result_dict
 
 
-class TestSandbox:
-    """Tests for code execution sandbox."""
+class TestEvaluationWorker:
+    """Tests for the best-effort subprocess evaluator."""
     
     def test_simple_execution(self):
         """Test executing simple code."""
@@ -220,10 +221,27 @@ os.system("echo pwned")
         
         assert not outcome.success
         assert "blocked" in (outcome.error_message or "").lower() or "security" in (outcome.error_message or "").lower()
+
+    def test_isolation_failure_fails_closed(self, monkeypatch):
+        """Generated code must never fall back to the caller process."""
+
+        class BrokenProcess:
+            def __init__(self, *args, **kwargs):
+                raise RuntimeError("subprocess unavailable")
+
+        monkeypatch.setattr(sandbox_module.multiprocessing, "Process", BrokenProcess)
+
+        outcome = execute_code(
+            "raise RuntimeError('generated code executed')",
+            check_safety=False,
+        )
+
+        assert not outcome.success
+        assert outcome.error_type == "IsolationError"
     
     def test_safety_check(self):
         """Test static safety analysis."""
-        # Safe code
+        # Code with no configured denylist violation
         is_safe, violations = check_code_safety("x = 2 + 2")
         assert is_safe
         assert len(violations) == 0
@@ -265,10 +283,10 @@ def double(n):
 
 
 class TestIntegration:
-    """Integration tests for executor + sandbox."""
+    """Integration tests for the executor and evaluation worker."""
     
     def test_full_pipeline(self):
-        """Test full pipeline: genome -> execution -> sandbox."""
+        """Test the full genome-to-subprocess-evaluation pipeline."""
         from emap.evolution.fitness import Task
         from emap.evolution.integrated_eval import (
             IntegratedEvaluator,

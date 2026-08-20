@@ -357,7 +357,7 @@ class FitnessEvaluator:
         Run test cases on generated code.
         
         Placeholder implementation. Real version would:
-        1. Create sandbox environment
+        1. Create an unprivileged subprocess evaluation environment
         2. Execute generated code
         3. Run test cases
         4. Return pass/fail

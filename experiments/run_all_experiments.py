@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-EMAP Complete Experiment Suite
+EMAP Recorded Experiment Matrix
 
 Runs all experiments across 4 budget regimes with 3 seeds each.
-Robust design: each experiment saves immediately, can resume from interruption.
+Each experiment saves immediately and can resume after interruption. The
+resulting 12-run matrix is exploratory and supports descriptive comparisons;
+it is not a statistical-significance design.
 
 Budget Regimes:
 - TIGHT (2000 tokens): Tests minimal resource allocation
@@ -11,11 +13,11 @@ Budget Regimes:
 - LOOSE (10000 tokens): Relaxed constraint
 - UNCONSTRAINED (50000 tokens): Effectively unlimited
 
-For PhD-level rigor:
-- 12 generations per experiment (enough for convergence)
-- 10 population size (sufficient genetic diversity)
-- 12% sample per generation (20 tasks), 25% final eval (41 tasks)
-- 3 seeds for statistical validity (42, 43, 44)
+Recorded configuration:
+- 12 generations per experiment
+- 10 genomes per population
+- 12% sample per generation (19 tasks), 25% final eval (41 tasks)
+- 3 seeds for repeated observations (42, 43, 44)
 """
 
 from __future__ import annotations
@@ -33,10 +35,10 @@ import numpy as np
 BUDGETS = [2000, 5000, 10000, 50000]
 SEEDS = [42, 43, 44]
 
-# Experiment parameters (PhD rigor)
+# Recorded experiment parameters
 GENERATIONS = 12
 POPULATION = 10
-SAMPLE_FRACTION = 0.12  # ~20 tasks per eval
+SAMPLE_FRACTION = 0.12  # 19 tasks per eval: int(164 * 0.12)
 FINAL_SAMPLE = 0.25     # ~41 tasks for final eval
 
 

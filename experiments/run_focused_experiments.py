@@ -2,8 +2,8 @@
 """
 EMAP Focused Experiments
 
-Runs complete experiments across 4 budget regimes for statistical comparison.
-Optimized for ~2-4 hour completion with meaningful results.
+Runs a bounded exploratory sweep across four budget regimes.
+The resulting artifacts are descriptive and do not establish statistical significance.
 """
 
 from __future__ import annotations

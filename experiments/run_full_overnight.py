@@ -63,7 +63,7 @@ CONFIG = {
     "sample_fraction": 0.05,  # 5% = ~8 tasks per eval
 }
 
-SEEDS = [42, 43, 44]  # 3 seeds for statistical validity
+SEEDS = [42, 43, 44]  # Repeated observations; not a significance design
 
 
 def run_single_experiment(tasks, budget, seed, config, backend, output_dir, viz_path=None):
