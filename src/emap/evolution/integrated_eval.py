@@ -1,7 +1,8 @@
 """
 Integrated fitness evaluation using actual LLM execution.
 
-This module connects the evolution loop to the agent executor and sandbox,
+This module connects the evolution loop to the agent executor and best-effort
+subprocess evaluator,
 providing real fitness evaluation under token budgets.
 """
 
@@ -71,12 +72,12 @@ Complete the implementation:"""
 @dataclass
 class IntegratedEvaluator:
     """
-    Evaluator that uses actual LLM execution with sandbox testing.
+    Evaluator that uses actual LLM execution with subprocess testing.
     
     This is the real evaluator used during evolution, connecting:
     - Genome -> MultiAgentExecutor -> LLM calls
-    - LLM output -> Code extraction -> Sandbox execution
-    - Sandbox result -> Task pass/fail -> Fitness
+    - LLM output -> Code extraction -> Restricted subprocess execution
+    - Worker result -> Task pass/fail -> Fitness
     """
     
     backend: LLMBackend
@@ -180,8 +181,8 @@ class IntegratedEvaluator:
             # Combine with prompt (signature + implementation)
             full_code = task.prompt + "\n" + code
             
-            # Run in sandbox
-            sandbox_result = execute_code(
+            # Run in the best-effort subprocess evaluator.
+            execution_result = execute_code(
                 code=full_code,
                 test_code=task.test_code,
                 timeout=self.timeout_seconds,
@@ -190,11 +191,11 @@ class IntegratedEvaluator:
             
             return TaskResult(
                 task_id=task.id,
-                success=sandbox_result.success,
+                success=execution_result.success,
                 tokens_used=exec_result.total_tokens_used,
                 time_seconds=time.time() - start_time,
                 output=code,
-                error=sandbox_result.error_message if not sandbox_result.success else None,
+                error=execution_result.error_message if not execution_result.success else None,
             )
             
         except Exception as e:

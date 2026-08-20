@@ -5,7 +5,7 @@ Resource-Constrained Evolution of Multi-Agent Programming Architectures
 """
 
 __version__ = "0.1.0"
-__author__ = "Anonymous"
+__author__ = "Noah Ingwers"
 
 from emap.genome.representation import MultiAgentGenome, AgentRole
 from emap.evolution.loop import evolve

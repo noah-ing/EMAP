@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """
-EMAP Full Experiment Runner
+EMAP Configurable Experiment Runner
 
-This script runs the complete set of experiments for the EMAP paper:
+This script defines a larger proposed experiment matrix:
 1. Evolution under 4 budget regimes (Tight, Medium, Loose, Unconstrained)
-2. 5 random seeds per regime for statistical validity
+2. Repeated random seeds per regime
 3. Cross-benchmark transfer evaluation
+
+The checked-in evidence does not show that this entire matrix was completed.
+Five seeds provide repeated estimates but do not by themselves establish
+statistical validity.
 
 Usage:
     # Set your API key first
-    export OPENAI_API_KEY="sk-..."
+    export OPENAI_API_KEY="<set-in-your-shell>"
 
     # Run pilot experiment (1 regime, 1 seed)
     python experiments/run_experiments.py --pilot
@@ -64,7 +68,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# Budget regimes from the paper
+# Budget regimes for this runner
 BUDGET_REGIMES = {
     "tight": 2000,
     "medium": 5000,
@@ -72,7 +76,7 @@ BUDGET_REGIMES = {
     "unconstrained": 50000,  # "Unlimited" but still capped for safety
 }
 
-# Default evolution parameters (from paper)
+# Default evolution parameters for this proposed matrix
 DEFAULT_CONFIG = {
     "population_size": 20,
     "generations": 50,
